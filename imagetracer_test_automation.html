@@ -55,7 +55,7 @@
           // Selected images
           for (var i = 1; i < 2; i++) {
             if (document.getElementById("icb" + i).checked) {
-              filenames.push("testimages/" + "pizza" + ".jpg");
+              filenames.push("testimages/" + "tools" + ".png");
             }
           }
 
@@ -78,9 +78,9 @@
             }
           }
           /*if(document.getElementById('ocb1').checked){ optionses.push({}); }
-				if(document.getElementById('ocb2').checked){ optionses.push({ blurradius:2, ltres:0.1, numberofcolors:64 }); }
-				if(document.getElementById('ocb3').checked){ optionses.push({ strokewidth:4, blurradius:5, roundcoords:0, desc:false, scale:4, }); }
-				*/
+      if(document.getElementById('ocb2').checked){ optionses.push({ blurradius:2, ltres:0.1, numberofcolors:64 }); }
+      if(document.getElementById('ocb3').checked){ optionses.push({ strokewidth:4, blurradius:5, roundcoords:0, desc:false, scale:4, }); }
+      */
           if (document.getElementById("ocbx").checked) {
             try {
               optionses.push(
@@ -105,7 +105,7 @@
           for (var k = 0; k < repeatnum; k++) {
             for (var i = 0; i < filenames.length; i++) {
               for (var j = 0; j < optionses.length; j++) {
-                queue.push([filenames[i], optionses[j]]);
+                queue.push([filenames[i], optionses[j], ks[j]]);
               }
             }
           }
@@ -155,6 +155,7 @@
               if (drawmode) {
                 document.getElementById("svgcontainer").innerHTML = "";
                 ImageTracer.appendSVGString(svgstr, "svgcontainer");
+                document.getElementById("svgpreset").innerText = item[2];
 
                 // Draw diff
                 // draw original
@@ -347,7 +348,7 @@
             '<label><input type="checkbox" id="ocb' +
             i +
             '" value="1" ' +
-            // (i < 6 ? 'checked="true"' : "") +
+            (i < k.length ? 'checked="true"' : "") +
             " ><b>" +
             k[i] +
             "</b> : " +
@@ -387,7 +388,7 @@
                   value="1"
                   checked="true"
                 />1.png</label
-              ><br /><img height="100" src="testimages/pizza.jpg" />
+              ><br /><img height="100" src="testimages/tools.png" />
             </td>
             <!-- <td><label><input type="checkbox" id="icb2" value="1" checked="true" >2.png</label><br><img src="testimages/2.png"></td>
 			<td><label><input type="checkbox" id="icb3" value="1" checked="true" >3.png</label><br><img src="testimages/3.png"></td>
@@ -436,7 +437,7 @@
         style="width: 40em"
       /><br />
       Example Custom Options:<br />{"ltres":1,"qtres":1,"pathomit":8,"colorsampling":true,"numberofcolors":16,"mincolorratio":0.02,"colorquantcycles":3,"scale":1,"simplifytolerance":0,"roundcoords":1,"lcpr":0,"qcpr":0,"desc":true,"viewbox":false,"blurradius":0,"blurdelta":20}<br />
-      <label><input type="text" id="repeatinput" value="1" />Repeats</label
+      <label><input type="text" id="repeatinput" value="10" />Repeats</label
       ><br />
       <button id="startbutton" type="button" onclick="startprocess()">
         START
@@ -446,22 +447,40 @@
       </button>
     </form>
 
-    <h1>Result (if Draw SVG is active)</h1>
+    <!-- <h1>Result (if Draw SVG is active)</h1> -->
     <table id="itable">
       <thead>
         <tr>
-          <th>Difference</th>
+          <!-- <th>Difference</th> -->
           <th>Traced SVG</th>
-          <th>Original raster</th>
-          <th>SVG rendered as raster</th>
+          <!-- <th>Original raster</th>
+          <th>SVG rendered as raster</th> -->
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><canvas id="diffcanvas" class="imgcontainer"></canvas></td>
-          <td><div id="svgcontainer" class="imgcontainer"></div></td>
-          <td><canvas id="originalcanvas" class="imgcontainer"></canvas></td>
-          <td><canvas id="newcanvas" class="imgcontainer"></canvas></td>
+          <td style="display: none">
+            <canvas id="diffcanvas" class="imgcontainer"></canvas>
+          </td>
+          <td style="position: relative">
+            <h1
+              style="
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                background-color: black;
+              "
+              id="svgpreset"
+            ></h1>
+            <div id="svgcontainer" class="imgcontainer"></div>
+          </td>
+          <td style="display: none">
+            <canvas id="originalcanvas" class="imgcontainer"></canvas>
+          </td>
+          <td style="display: none">
+            <canvas id="newcanvas" class="imgcontainer"></canvas>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -156,6 +156,7 @@ For more information, please refer to http://unlicense.org/
         return tracedata;
       }), // End of imagedataToTracedata()
       (this.optionpresets = {
+        // IMAGETRACER DEFAULT
         default: {
           // Tracing
           corsenabled: false,
@@ -187,60 +188,237 @@ For more information, please refer to http://unlicense.org/
           blurradius: 0,
           blurdelta: 20,
         },
-        posterized1: { colorsampling: 0, numberofcolors: 2 },
-        posterized2: { numberofcolors: 4, blurradius: 5 },
-        curvy: { ltres: 0.01, linefilter: true, rightangleenhance: false },
-        sharp: { qtres: 0.01, linefilter: false },
-        detailed: {
-          pathomit: 0,
-          roundcoords: 2,
-          ltres: 0.5,
-          qtres: 0.5,
-          numberofcolors: 64,
-        },
-        smoothed: { blurradius: 5, blurdelta: 64 },
-        grayscale: { colorsampling: 0, colorquantcycles: 1, numberofcolors: 7 },
-        fixedpalette: {
-          colorsampling: 0,
-          colorquantcycles: 1,
-          numberofcolors: 27,
-        },
-        randomsampling1: { colorsampling: 1, numberofcolors: 8 },
-        randomsampling2: { colorsampling: 1, numberofcolors: 64 },
-        artistic1: {
-          colorsampling: 0,
-          colorquantcycles: 1,
-          pathomit: 0,
-          blurradius: 5,
-          blurdelta: 64,
-          ltres: 0.01,
-          linefilter: true,
-          numberofcolors: 16,
-          strokewidth: 2,
-        },
-        artistic2: {
-          qtres: 0.01,
-          colorsampling: 0,
-          colorquantcycles: 1,
-          numberofcolors: 4,
+
+        // VECTORSOFT DEFAULT
+        // default: {
+        //   // Tracing
+        //   corsenabled: true,
+        //   ltres: 2.5,
+        //   qtres: 0.5,
+        //   pathomit: 6,
+        //   rightangleenhance: false,
+
+        //   // Color quantization
+        //   colorsampling: 3,
+        //   numberofcolors: 8,
+        //   mincolorratio: 0,
+        //   colorquantcycles: 8,
+
+        //   // Layering method
+        //   layering: 0,
+
+        //   // SVG rendering
+        //   strokewidth: 0,
+        //   linefilter: false,
+        //   scale: 1,
+        //   roundcoords: 1,
+        //   viewbox: false,
+        //   desc: false,
+        //   lcpr: 0,
+        //   qcpr: 0,
+
+        //   // Blur
+        //   blurradius: 0,
+        //   blurdelta: 20,
+        // },
+
+        // posterized1: { colorsampling: 0, numberofcolors: 2 },
+        // posterized2: { numberofcolors: 4, blurradius: 5 },
+        // curvy: { ltres: 0.01, linefilter: true, rightangleenhance: false },
+        // sharp: { qtres: 0.01, linefilter: false },
+        // detailed: {
+        //   pathomit: 0,
+        //   roundcoords: 2,
+        //   ltres: 0.5,
+        //   qtres: 0.5,
+        //   numberofcolors: 64,
+        // },
+        // smoothed: { blurradius: 5, blurdelta: 64 },
+        // grayscale: { colorsampling: 0, colorquantcycles: 1, numberofcolors: 7 },
+        // fixedpalette: {
+        //   colorsampling: 0,
+        //   colorquantcycles: 1,
+        //   numberofcolors: 27,
+        // },
+        // randomsampling1: { colorsampling: 1, numberofcolors: 8 },
+        // randomsampling2: { colorsampling: 1, numberofcolors: 64 },
+        // artistic1: {
+        //   colorsampling: 0,
+        //   colorquantcycles: 1,
+        //   pathomit: 0,
+        //   blurradius: 5,
+        //   blurdelta: 64,
+        //   ltres: 0.01,
+        //   linefilter: true,
+        //   numberofcolors: 16,
+        //   strokewidth: 2,
+        // },
+        // artistic2: {
+        //   qtres: 0.01,
+        //   colorsampling: 0,
+        //   colorquantcycles: 1,
+        //   numberofcolors: 4,
+        //   strokewidth: 0,
+        // },
+        // artistic3: { qtres: 10, ltres: 10, numberofcolors: 8 },
+        // artistic4: {
+        //   qtres: 10,
+        //   ltres: 10,
+        //   numberofcolors: 64,
+        //   blurradius: 5,
+        //   blurdelta: 256,
+        //   strokewidth: 2,
+        // },
+        // posterized3: {
+        //   ltres: 1,
+        //   qtres: 1,
+        //   pathomit: 20,
+        //   rightangleenhance: true,
+        //   colorsampling: 0,
+        //   numberofcolors: 3,
+        //   mincolorratio: 0,
+        //   colorquantcycles: 3,
+        //   blurradius: 3,
+        //   blurdelta: 20,
+        //   strokewidth: 0,
+        //   linefilter: false,
+        //   roundcoords: 1,
+        //   // pal: [
+        //   //   { r: 0, g: 0, b: 100, a: 255 },
+        //   //   { r: 255, g: 255, b: 255, a: 255 },
+        //   // ],
+        // },
+        pngDefaults1: {
+          // Tracing
+          corsenabled: true,
+          ltres: 1,
+          qtres: 0.3,
+          pathomit: 8,
+          rightangleenhance: false,
+
+          // Color quantization
+          colorsampling: 3,
+          numberofcolors: 8,
+          mincolorratio: 0,
+          colorquantcycles: 3,
+
+          // Layering method
+          layering: 0,
+
+          // SVG rendering
           strokewidth: 0,
+          linefilter: false,
+          scale: 1,
+          roundcoords: 1,
+          viewbox: false,
+          desc: false,
+          lcpr: 0,
+          qcpr: 0,
+
+          // Blur
+          blurradius: 0,
+          blurdelta: 20,
         },
-        artistic3: { qtres: 10, ltres: 10, numberofcolors: 8 },
-        artistic4: {
-          qtres: 10,
-          ltres: 10,
-          numberofcolors: 64,
-          blurradius: 5,
-          blurdelta: 256,
-          strokewidth: 2,
+        pngDefaults2: {
+          // Tracing
+          corsenabled: true,
+          ltres: 1,
+          qtres: 0.3,
+          pathomit: 8,
+          rightangleenhance: false,
+
+          // Color quantization
+          colorsampling: 3,
+          numberofcolors: 4,
+          mincolorratio: 0,
+          colorquantcycles: 3,
+
+          // Layering method
+          layering: 0,
+
+          // SVG rendering
+          strokewidth: 0,
+          linefilter: false,
+          scale: 1,
+          roundcoords: 1,
+          viewbox: false,
+          desc: false,
+          lcpr: 0,
+          qcpr: 0,
+
+          // Blur
+          blurradius: 0,
+          blurdelta: 20,
         },
-        posterized3: {
+        // jpgDefaults1: {
+        //   // Tracing
+        //   corsenabled: true,
+        //   ltres: 0.000001,
+        //   qtres: 1,
+        //   pathomit: 8,
+        //   rightangleenhance: false,
+
+        //   // Color quantization
+        //   colorsampling: 2,
+        //   numberofcolors: 3,
+        //   mincolorratio: 0,
+        //   colorquantcycles: 12,
+
+        //   // Layering method
+        //   layering: 0,
+
+        //   // SVG rendering
+        //   strokewidth: 0,
+        //   linefilter: false,
+        //   scale: 1,
+        //   roundcoords: 1,
+        //   viewbox: false,
+        //   desc: false,
+        //   lcpr: 0,
+        //   qcpr: 0,
+
+        //   // Blur
+        //   blurradius: 0,
+        //   blurdelta: 20,
+        // },
+        // jpgDefaults2: {
+        //   // Tracing
+        //   corsenabled: true,
+        //   ltres: 0.000001,
+        //   qtres: 1,
+        //   pathomit: 8,
+        //   rightangleenhance: false,
+
+        //   // Color quantization
+        //   colorsampling: 3,
+        //   numberofcolors: 8,
+        //   mincolorratio: 0.1,
+        //   colorquantcycles: 12,
+
+        //   // Layering method
+        //   layering: 0,
+
+        //   // SVG rendering
+        //   strokewidth: 0,
+        //   linefilter: false,
+        //   scale: 1,
+        //   roundcoords: 1,
+        //   viewbox: false,
+        //   desc: false,
+        //   lcpr: 0,
+        //   qcpr: 0,
+
+        //   // Blur
+        //   blurradius: 0,
+        //   blurdelta: 20,
+        // },
+        ONION: {
           ltres: 1,
           qtres: 1,
           pathomit: 20,
           rightangleenhance: true,
           colorsampling: 0,
-          numberofcolors: 3,
+          numberofcolors: 8, // the only difference from posterized3
           mincolorratio: 0,
           colorquantcycles: 3,
           blurradius: 3,
@@ -248,54 +426,6 @@ For more information, please refer to http://unlicense.org/
           strokewidth: 0,
           linefilter: false,
           roundcoords: 1,
-          pal: [
-            { r: 0, g: 0, b: 100, a: 255 },
-            { r: 255, g: 255, b: 255, a: 255 },
-          ],
-        },
-        remBigRasterSize: {
-          corsenabled: true,
-          ltres: 0.000001,
-          qtres: 1,
-          pathomit: 8,
-          rightangleenhance: false,
-          colorsampling: 2,
-          numberofcolors: 3,
-          mincolorratio: 0,
-          colorquantcycles: 12,
-          layering: 0,
-          strokewidth: 0,
-          linefilter: false,
-          scale: 1,
-          roundcoords: 1,
-          viewbox: false,
-          desc: false,
-          lcpr: 0,
-          qcpr: 0,
-          blurradius: 0,
-          blurdelta: 20,
-        },
-        remSmallRasterSize: {
-          corsenabled: true,
-          ltres: 0.000001,
-          qtres: 1,
-          pathomit: 8,
-          rightangleenhance: false,
-          colorsampling: 3,
-          numberofcolors: 8,
-          mincolorratio: 0.1,
-          colorquantcycles: 12,
-          layering: 0,
-          strokewidth: 0,
-          linefilter: false,
-          scale: 1,
-          roundcoords: 1,
-          viewbox: false,
-          desc: false,
-          lcpr: 0,
-          qcpr: 0,
-          blurradius: 0,
-          blurdelta: 20,
         },
       }), // End of optionpresets
       // creating options object, setting defaults for missing values
